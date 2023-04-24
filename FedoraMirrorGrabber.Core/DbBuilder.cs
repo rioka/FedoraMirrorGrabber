@@ -30,8 +30,9 @@ public class DbBuilder
                  .Where(m => selector(m)))
       {
         var url = mirror.Url;
-        url = url.TrimAt(pattern);
-        url = mirror.Url.EscapeForRegex();
+        url = url
+          .TrimAt(pattern)
+          .EscapeForRegex();
 
         var regex = BuildRegex(url, baseArch);
         var entry = BuildStoreIdEntry(regex, releaseVersion);
