@@ -1,6 +1,6 @@
 ﻿namespace FedoraMirrorGrabber.Core;
 
-internal static class Helpers
+internal static class StringExtensions
 {
   #region APIs
 
