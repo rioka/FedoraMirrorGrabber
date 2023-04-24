@@ -1,15 +1,27 @@
-﻿using System.Text;
+﻿using System.IO.Abstractions;
+using System.Text;
 
 namespace FedoraMirrorGrabber.Core;
 
 public class DbBuilder
 {
+  private readonly IFileSystem _fileSystem;
+
+  #region Constructors
+
+  public DbBuilder(IFileSystem fileSystem)
+  {
+    _fileSystem = fileSystem;
+  }
+
+  #endregion
+  
   #region APIs
 
   public async Task Save(string saveTo, string baseArch, int releaseVersion, IEnumerable<Mirror> mirrors, Func<Mirror, bool>? selector = null)
   {
 
-    await using (var stream = File.CreateText(saveTo))
+    await using (var stream = _fileSystem.File.CreateText(saveTo))
     {
       selector ??= _ => true;
       var pattern = $"/{baseArch}";
