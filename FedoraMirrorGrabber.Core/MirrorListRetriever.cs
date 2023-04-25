@@ -10,6 +10,10 @@ public class MirrorListRetriever
 
   #endregion
 
+  /// <summary>
+  ///   Host the request will be sent to.
+  /// </summary>
+  /// <remarks>Defaults to <see cref="Host"/>.</remarks>
   public Uri BaseAddress { get; set; }
 
   #region Constructors
@@ -27,7 +31,7 @@ public class MirrorListRetriever
 
   public async Task<IEnumerable<Mirror>> GetMirrors(string baseArch, int releaseVersion)
   {
-    _client.BaseAddress = new Uri("https://mirrors.fedoraproject.org/");
+    _client.BaseAddress = BaseAddress;
     var content = await _client.GetStringAsync($"metalink?repo=fedora-{releaseVersion}&arch={baseArch}");
 
     return _processor.Run(content);
