@@ -17,16 +17,18 @@ public class MirrorListRetrieverTests
   private MirrorListRetriever _sut;
 
   #endregion
-  
+
   [SetUp]
   public void BeforeEach()
   {
     _server = WireMockServer.Start();
-    
+
     _client = new HttpClient();
     _processor = new ResponseProcessor();
 
-    _sut = new MirrorListRetriever(_client, _processor);
+    _sut = new MirrorListRetriever(_client, _processor) {
+      BaseAddress = new Uri(_server.Url!)
+    };
   }
 
   [TearDown]
@@ -35,20 +37,21 @@ public class MirrorListRetrieverTests
     _client.Dispose();
     _server.Dispose();
   }
-  
+
   [Test]
   public async Task GetMirrors_returns_a_list_of_mirrors()
   {
     // arrange
-    _server.Given(Request
+    _server
+      .Given(Request
         .Create()
-        .WithPath("/metalink/*")
+        .WithPath("/metalink")
         .UsingGet())
       .RespondWith(Response
         .Create()
         .WithBody(Helpers.GetResource($"{Assembly.GetExecutingAssembly().GetName().Name}.Assets.Response.xml"))
         .WithStatusCode(200));
-    
+
     // act
     var result = await _sut.GetMirrors("x86_64", 37);
 
@@ -58,5 +61,5 @@ public class MirrorListRetrieverTests
     Assert.That(mirrors.Count(m => m.Type == RepositoryType.Http), Is.EqualTo(43));
     Assert.That(mirrors.Count(m => m.Type == RepositoryType.Https), Is.EqualTo(31));
     Assert.That(mirrors.Count(m => m.Type == RepositoryType.RSync), Is.EqualTo(35));
-  }  
+  }
 }
