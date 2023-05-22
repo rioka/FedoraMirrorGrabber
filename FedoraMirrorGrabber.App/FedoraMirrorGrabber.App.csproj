@@ -6,6 +6,9 @@
   
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.*" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.*" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.*" />
   </ItemGroup>
   
   <ItemGroup>
@@ -16,6 +19,10 @@
     <Compile Update="Program.Run.cs">
       <DependentUpon>Program.cs</DependentUpon>
     </Compile>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Http" />
   </ItemGroup>
 
 </Project>
