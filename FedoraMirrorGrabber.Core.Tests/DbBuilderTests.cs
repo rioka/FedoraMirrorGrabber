@@ -31,8 +31,8 @@ public class DbBuilderTests
     // assert
     var lines = await _fileSystem.File.ReadAllLinesAsync("fedora.db");
     Assert.That(lines.Count(), Is.EqualTo(2));
-    Assert.That(lines[0], Is.EqualTo(@"^http:\/\/creeperhost\.mm\.fcix\.net\/fedora\/linux\/releases\/37\/Everything\/(x86_64\/[a-zA-Z0-9\-\_\.\/]+\.d?rpm)$	http://repo.mirrors.squid.internal/fedora/37/$1"));
-    Assert.That(lines[1], Is.EqualTo(@"^https:\/\/mirror\.vpsnet\.com\/fedora\/linux\/releases\/37\/Everything\/(x86_64\/[a-zA-Z0-9\-\_\.\/]+\.d?rpm)$	http://repo.mirrors.squid.internal/fedora/37/$1"));
+    Assert.That(lines[0], Is.EqualTo(@"^http:\/\/creeperhost\.mm\.fcix\.net\/fedora\/linux\/releases\/37\/Everything\/(x86_64\/[a-zA-Z0-9\-\_\.\/]+\.d?rpm)	http://repo.mirrors.squid.internal/fedora/37/$1"));
+    Assert.That(lines[1], Is.EqualTo(@"^https:\/\/mirror\.vpsnet\.com\/fedora\/linux\/releases\/37\/Everything\/(x86_64\/[a-zA-Z0-9\-\_\.\/]+\.d?rpm)	http://repo.mirrors.squid.internal/fedora/37/$1"));
   }
   
   
@@ -52,7 +52,7 @@ public class DbBuilderTests
     // assert
     var lines = await _fileSystem.File.ReadAllLinesAsync("fedora.db");
     Assert.That(lines.Count(), Is.EqualTo(2));
-    Assert.That(lines[0], Is.EqualTo(@"^http:\/\/creeperhost\.mm\.fcix\.net\/fedora\/linux\/releases\/37\/Everything\/(x86_64\/[a-zA-Z0-9\-\_\.\/]+\.d?rpm)$	http://repo.mirrors.squid.internal/fedora/37/$1"));
-    Assert.That(lines[1], Is.EqualTo(@"^http:\/\/distrib-coffee\.ipsl\.jussieu\.fr\/pub\/linux\/fedora\/linux\/releases\/37\/Everything\/(x86_64\/[a-zA-Z0-9\-\_\.\/]+\.d?rpm)$	http://repo.mirrors.squid.internal/fedora/37/$1"));
+    Assert.That(lines[0], Is.EqualTo(@"^http:\/\/creeperhost\.mm\.fcix\.net\/fedora\/linux\/releases\/37\/Everything\/(x86_64\/[a-zA-Z0-9\-\_\.\/]+\.d?rpm)	http://repo.mirrors.squid.internal/fedora/37/$1"));
+    Assert.That(lines[1], Is.EqualTo(@"^http:\/\/distrib-coffee\.ipsl\.jussieu\.fr\/pub\/linux\/fedora\/linux\/releases\/37\/Everything\/(x86_64\/[a-zA-Z0-9\-\_\.\/]+\.d?rpm)	http://repo.mirrors.squid.internal/fedora/37/$1"));
   }  
 }
