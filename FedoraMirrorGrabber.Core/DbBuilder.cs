@@ -50,10 +50,10 @@ public class DbBuilder
   private StringBuilder BuildRegex(string url, string baseArch)
   {
     return new StringBuilder()
-      .Append('^')    // beginning of pattern
-      .Append(url)    // url with escaped characters and trailing part removed
-      .Append($@"\/({baseArch}\/[a-zA-Z0-9\-\_\.\/]+\.d?rpm)")   // regex for packages
-      .Append('$') ;  // end of pattern
+      .Append('^') // beginning of pattern
+      .Append(url) // url with escaped characters and trailing part removed
+      .Append($@"\/({baseArch}\/[a-zA-Z0-9\-\_\.\/]+\.d?rpm)"); // regex for packages
+    // There may be other data after the URL, so we do not append "$" to the regex 
   }
 
   private string BuildStoreIdEntry(StringBuilder regex, int releaseVer)
