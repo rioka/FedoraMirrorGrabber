@@ -2,10 +2,10 @@
 
 public class RpmFusionNonFree : RpmFusionUriTemplate
 {
-  public static readonly RpmFusionNonFree Default = new RpmFusionNonFree();
-  
   public static readonly string PathTemplate = $"metalink?repo=nonfree-fedora-{ReleasePlaceholder}&arch={BaseArchPlaceholder}";
 
+  public static readonly RpmFusionNonFree Default = new RpmFusionNonFree();
+  
   private RpmFusionNonFree() : base(PathTemplate)
   { }
   
