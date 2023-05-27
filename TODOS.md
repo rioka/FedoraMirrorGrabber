@@ -139,3 +139,14 @@ http://opencolo.mm.fcix.net/rpmfusion/nonfree/fedora/updates/37/x86_64/
 http://muug.ca/mirror/rpmfusion/nonfree/fedora/updates/37/x86_64/
 http://mirror.dst.ca/rpmfusion/nonfree/fedora/updates/37/x86_64/
 ```
+
+## Sample URLs
+
+| Repository                | URL                                                                                                                                     |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| Fedora                    | http://mirror.in2p3.fr/pub/fedora/linux/releases/37/Everything/x86_64/os/Packages/b/bacula-console-13.0.1-1.fc37.x86_64.rpm             |
+| Fedora Updates            | http://mirrors.syringanetworks.net/fedora/linux/updates/37/Everything/x86_64/Packages/b/bacula-console-13.0.3-1.fc37.x86_64.rpm         |
+| RpmFusion-Free            | http://mirror.fcix.net/rpmfusion/free/fedora/releases/37/Everything/x86_64/os/Packages/b/BasiliskII-1.0-0.20171001.7.fc37.10.x86_64.rpm |
+| RpmFusion-Free Updates    | http://mirror.fcix.net/rpmfusion/free/fedora/updates/37/x86_64/d/deadbeef-1.9.5-1.fc37.x86_64.rpm                                       |
+| RpmFusion-NonFree         | http://ziply.mm.fcix.net/rpmfusion/nonfree/fedora/releases/37/Everything/x86_64/os/Packages/c/cannonball-0.34-4.fc37.x86_64.rpm         |
+| RpmFusion-NonFree Updates | http://mirrors.ocf.berkeley.edu/rpmfusion/nonfree/fedora/updates/37/x86_64/d/discord-0.0.22-1.fc37.x86_64.rpm                           |
