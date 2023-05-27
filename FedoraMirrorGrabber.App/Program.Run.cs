@@ -1,5 +1,6 @@
 ﻿using FedoraMirrorGrabber.App;
 using FedoraMirrorGrabber.Core;
+using FedoraMirrorGrabber.Core.Uris;
 using System.IO.Abstractions;
 
 internal partial class Program
@@ -10,7 +11,7 @@ internal partial class Program
       var retriever = new MirrorListRetriever(client, new ResponseProcessor());
 
       var allMirrors = new List<Mirror>();
-      await foreach (var mirrors in retriever.GetMirrors(null!, options.Architecture, options.ReleaseVersion))
+      await foreach (var mirrors in retriever.GetMirrors(MirrorUriTemplate.All, options.Architecture, options.ReleaseVersion))
       {
         allMirrors.AddRange(mirrors);
       }
