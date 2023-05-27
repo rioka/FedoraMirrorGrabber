@@ -1,8 +1,12 @@
 ﻿namespace FedoraMirrorGrabber.Core.Uris;
 
-public class RpmFusionNonFree : MirrorUri
+public class RpmFusionNonFree : RpmFusionUriTemplate
 {
-  public RpmFusionNonFree(int releaseVer, string baseArch) 
-    : base($"https://mirrors.rpmfusion.org/metalink?repo=nonfree-fedora-{releaseVer}&arch={baseArch}")
+  public readonly static string PathTemplate = $"metalink?repo=nonfree-fedora-{ReleasePlaceholder}&arch={BaseArchPlaceholder}"; 
+  
+  public RpmFusionNonFree() : base(PathTemplate)
+  { }
+  
+  public RpmFusionNonFree(string host) : base(host, PathTemplate)
   { }
 }
