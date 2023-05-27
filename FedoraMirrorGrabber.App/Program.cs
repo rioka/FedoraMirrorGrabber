@@ -9,10 +9,14 @@ internal partial class Program
 {
   public static async Task Main(string[] args)
   {
-    await Parser
-      .Default
-      .ParseArguments<Options>(args)
-      .WithParsedAsync(Run);
+    using (var parser = new Parser(config => {
+               config.CaseInsensitiveEnumValues = true;
+             }))
+    {
+      await parser
+        .ParseArguments<Options>(args)
+        .WithParsedAsync(Run);
+    }
   }
   
   private static IHostBuilder CreateHostBuilder(string[] args)
