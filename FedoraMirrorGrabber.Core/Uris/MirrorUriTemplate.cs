@@ -2,6 +2,11 @@
 
 public abstract class MirrorUriTemplate
 {
+  public static readonly IReadOnlyCollection<MirrorUriTemplate> All = new MirrorUriTemplate[]
+  {
+    Release.Default
+  };
+  
   protected static readonly string ReleasePlaceholder = "{releaseVer}";
   protected static readonly string BaseArchPlaceholder = "{baseArch}";
   

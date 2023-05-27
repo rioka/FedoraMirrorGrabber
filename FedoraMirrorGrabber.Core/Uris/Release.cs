@@ -2,9 +2,11 @@
 
 public class Release : FedoraUriTemplate
 {
-  public readonly static string PathTemplate = $"metalink?repo=fedora-{ReleasePlaceholder}&arch={BaseArchPlaceholder}";
+  public static readonly Release Default = new Release();
   
-  public Release() : base(PathTemplate) 
+  public static readonly string PathTemplate = $"metalink?repo=fedora-{ReleasePlaceholder}&arch={BaseArchPlaceholder}";
+
+  private Release() : base(PathTemplate) 
   { }
 
   public Release(string host) : base(host, PathTemplate)

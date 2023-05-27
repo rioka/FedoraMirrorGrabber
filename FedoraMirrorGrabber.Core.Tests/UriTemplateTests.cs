@@ -9,7 +9,7 @@ public class UriTemplateTests
   public void Release_resolves_to_expected_url()
   {
     // arrange
-    var sut = new Release();
+    var sut = Release.Default;
 
     // act
     var result = sut.Resolve(37, "arm");
@@ -35,7 +35,7 @@ public class UriTemplateTests
   public void Updates_resolves_to_expected_url()
   {
     // arrange
-    var sut = new Updates();
+    var sut = Updates.Default;
 
     // act
     var result = sut.Resolve(37, "arm");
@@ -61,7 +61,7 @@ public class UriTemplateTests
   public void RpmFusionFree_resolves_to_expected_url()
   {
     // arrange
-    var sut = new RpmFusionFree();
+    var sut = RpmFusionFree.Default;
 
     // act
     var result = sut.Resolve(37, "arm");
@@ -87,7 +87,7 @@ public class UriTemplateTests
   public void RpmFusionNonFree_resolves_to_expected_url()
   {
     // arrange
-    var sut = new RpmFusionNonFree();
+    var sut = RpmFusionNonFree.Default;
 
     // act
     var result = sut.Resolve(37, "arm");
@@ -113,7 +113,7 @@ public class UriTemplateTests
   public void RpmFusionFreeUpdates_resolves_to_expected_url()
   {
     // arrange
-    var sut = new RpmFusionFreeUpdates();
+    var sut = RpmFusionFreeUpdates.Default;
 
     // act
     var result = sut.Resolve(37, "arm");
@@ -139,7 +139,7 @@ public class UriTemplateTests
   public void RpmFusionNonFreeUpdates_resolves_to_expected_url()
   {
     // arrange
-    var sut = new RpmFusionNonFreeUpdates();
+    var sut = RpmFusionNonFreeUpdates.Default;
 
     // act
     var result = sut.Resolve(37, "arm");
