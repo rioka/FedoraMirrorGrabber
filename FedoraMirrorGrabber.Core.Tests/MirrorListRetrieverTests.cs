@@ -1,5 +1,7 @@
 ﻿using FedoraMirrorGrabber.Core.Tests.Internals;
+using FedoraMirrorGrabber.Core.Uris;
 using System.Reflection;
+using WireMock.Matchers;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
@@ -26,9 +28,7 @@ public class MirrorListRetrieverTests
     _client = new HttpClient();
     _processor = new ResponseProcessor();
 
-    _sut = new MirrorListRetriever(_client, _processor) {
-      BaseAddress = new Uri(_server.Url!)
-    };
+    _sut = new MirrorListRetriever(_client, _processor);
   }
 
   [TearDown]
@@ -42,24 +42,44 @@ public class MirrorListRetrieverTests
   public async Task GetMirrors_returns_a_list_of_mirrors()
   {
     // arrange
+    var uris = new MirrorUriTemplate[] {
+      new Release(_server.Url!), 
+      new Updates(_server.Url!)
+    };
+    const int release = 37;
+    const string arch = "x86_64";
     _server
       .Given(Request
         .Create()
         .WithPath("/metalink")
+        .WithParam("repo", new WildcardMatcher("fedora*"))
         .UsingGet())
       .RespondWith(Response
         .Create()
-        .WithBody(Helpers.GetResource($"{Assembly.GetExecutingAssembly().GetName().Name}.Assets.Response.xml"))
+        .WithBody(Helpers.GetResource($"{Assembly.GetExecutingAssembly().GetName().Name}.Assets.ReleaseResponse.xml"))
+        .WithStatusCode(200));
+    _server
+      .Given(Request
+        .Create()
+        .WithPath("/metalink")
+        .WithParam("repo", new WildcardMatcher("updates*"))
+        .UsingGet())
+      .RespondWith(Response
+        .Create()
+        .WithBody(Helpers.GetResource($"{Assembly.GetExecutingAssembly().GetName().Name}.Assets.UpdatesResponse.xml"))
         .WithStatusCode(200));
 
     // act
-    var result = await _sut.GetMirrors("x86_64", 37);
+    var result = new List<Mirror>();
+    await foreach (var mirrorList in _sut.GetMirrors(uris, arch, release))
+    {
+      result.AddRange(mirrorList);
+    }
 
     // assert
-    var mirrors = result.ToList();
-    Assert.That(mirrors.Count, Is.EqualTo(109));
-    Assert.That(mirrors.Count(m => m.Type == RepositoryType.Http), Is.EqualTo(43));
-    Assert.That(mirrors.Count(m => m.Type == RepositoryType.Https), Is.EqualTo(31));
-    Assert.That(mirrors.Count(m => m.Type == RepositoryType.RSync), Is.EqualTo(35));
+    Assert.That(result.Count, Is.EqualTo(188));
+    Assert.That(result.Count(m => m.Type == RepositoryType.Http), Is.EqualTo(73));
+    Assert.That(result.Count(m => m.Type == RepositoryType.Https), Is.EqualTo(54));
+    Assert.That(result.Count(m => m.Type == RepositoryType.RSync), Is.EqualTo(61));
   }
 }

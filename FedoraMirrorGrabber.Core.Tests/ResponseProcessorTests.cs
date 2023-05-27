@@ -11,7 +11,7 @@ public class ResponseProcessorTests
   {
     // arrange
     var sut = new ResponseProcessor();
-    var content = Helpers.GetResource($"{Assembly.GetExecutingAssembly().GetName().Name}.Assets.Response.xml");
+    var content = Helpers.GetResource($"{Assembly.GetExecutingAssembly().GetName().Name}.Assets.ReleaseResponse.xml");
 
     // act
     var result = sut.Run(content);
