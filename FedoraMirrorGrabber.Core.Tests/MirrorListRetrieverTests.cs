@@ -22,13 +22,13 @@ public class MirrorListRetrieverTests
 
   #endregion
 
+  #region Setup & teardown
+  
   [OneTimeSetUp]
   public void BeforeAll()
   {
     _loggerFactory = LoggerFactory.Create(builder => builder.AddDebug());
   }
-
-  #region Setup & teardown
 
   [OneTimeTearDown]
   public void AfterAll()
