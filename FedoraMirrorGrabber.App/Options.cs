@@ -5,8 +5,8 @@ namespace FedoraMirrorGrabber.App;
 
 internal class Options  
 {
-  [Option('u', "url", HelpText = "Url to get list of mirrors", Default = "https://mirrors.fedoraproject.org/")]
-  public string Url { get; set; }
+  // [Option('u', "url", HelpText = "Url to get list of mirrors", Default = "https://mirrors.fedoraproject.org/")]
+  // public string Url { get; set; }
   
   [Option('a', "architecture", HelpText = "Architecture", Default = "x86_64")]
   public string Architecture { get; set; }  
