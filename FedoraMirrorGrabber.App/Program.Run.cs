@@ -11,7 +11,7 @@ internal partial class Program
     _logger.LogInformation("Generating database for Squid StoreId for Fedora {ReleaseVersion} ({Architecture})", options.ReleaseVersion, options.Architecture);
 
     var client = new HttpClient();
-    var retriever = new MirrorListRetriever(client, new ResponseProcessor());
+    var retriever = new MirrorListRetriever(client, new ResponseProcessor(), _loggerFactory.CreateLogger<MirrorListRetriever>());
 
     var allMirrors = new List<Mirror>();
     await foreach (var mirrors in retriever.GetMirrors(MirrorUriTemplate.All, options.Architecture,
