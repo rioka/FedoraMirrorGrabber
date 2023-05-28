@@ -11,8 +11,13 @@ internal partial class Program
   {
     using (var parser = new Parser(config => {
                config.CaseInsensitiveEnumValues = true;
+               // temporary, or I do not get help since not using Parser.Default
+               config.HelpWriter = Console.Error;
              }))
     {
+      // var result = parser.ParseArguments<Options>(args);
+      //
+      // await result.WithParsedAsync(Run);
       await parser
         .ParseArguments<Options>(args)
         .WithParsedAsync(Run);
@@ -30,13 +35,11 @@ internal partial class Program
         services
           .AddScoped<IFileSystem, FileSystem>()
           .AddScoped<DbBuilder>()
-          .AddScoped<MirrorListRetriever>()
           .AddScoped<ResponseProcessor>();
 
-        //services.AddScoped<SampleApp>();
+        services.AddScoped<Executor>();
       });
   
     return builder;
   }        
-  
 }
