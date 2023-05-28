@@ -1,5 +1,6 @@
 ﻿using FedoraMirrorGrabber.Core.Tests.Internals;
 using FedoraMirrorGrabber.Core.Uris;
+using Microsoft.Extensions.Logging;
 using System.Reflection;
 using WireMock.Matchers;
 using WireMock.RequestBuilders;
@@ -13,6 +14,7 @@ public class MirrorListRetrieverTests
 {
   #region Data
 
+  private ILoggerFactory _loggerFactory;
   private HttpClient _client;
   private ResponseProcessor _processor;
   private WireMockServer _server;
@@ -20,6 +22,18 @@ public class MirrorListRetrieverTests
 
   #endregion
 
+  [OneTimeSetUp]
+  public void BeforeAll()
+  {
+    _loggerFactory = LoggerFactory.Create(builder => builder.AddDebug());
+  }
+  
+  [OneTimeTearDown]
+  public void AfterAll()
+  {
+    _loggerFactory.Dispose();
+  }
+  
   [SetUp]
   public void BeforeEach()
   {
@@ -28,7 +42,7 @@ public class MirrorListRetrieverTests
     _client = new HttpClient();
     _processor = new ResponseProcessor();
 
-    _sut = new MirrorListRetriever(_client, _processor);
+    _sut = new MirrorListRetriever(_client, _processor, _loggerFactory.CreateLogger<MirrorListRetriever>());
   }
 
   [TearDown]
