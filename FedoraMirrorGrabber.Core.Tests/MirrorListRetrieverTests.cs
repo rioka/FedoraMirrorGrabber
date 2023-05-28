@@ -27,7 +27,9 @@ public class MirrorListRetrieverTests
   {
     _loggerFactory = LoggerFactory.Create(builder => builder.AddDebug());
   }
-  
+
+  #region Setup & teardown
+
   [OneTimeTearDown]
   public void AfterAll()
   {
@@ -51,6 +53,8 @@ public class MirrorListRetrieverTests
     _client.Dispose();
     _server.Dispose();
   }
+
+  #endregion
 
   [Test]
   public async Task GetMirrors_returns_a_list_of_mirrors()
