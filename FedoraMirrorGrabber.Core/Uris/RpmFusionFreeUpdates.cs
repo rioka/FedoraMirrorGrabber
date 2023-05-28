@@ -6,9 +6,15 @@ public class RpmFusionFreeUpdates : RpmFusionUriTemplate
 
   public static readonly RpmFusionFreeUpdates Default = new RpmFusionFreeUpdates();
     
+  public override string Name => "RPM Fusion free (Updates)";
+
+  #region Constructors
+
   private RpmFusionFreeUpdates() : base(PathTemplate)
   { }
 
   public RpmFusionFreeUpdates(string host) : base(host, PathTemplate)
   { }
+
+  #endregion
 }

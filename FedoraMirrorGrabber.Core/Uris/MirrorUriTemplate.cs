@@ -19,6 +19,8 @@ public abstract class MirrorUriTemplate
     RpmFusionNonFreeUpdates.Default
   };
   
+  public abstract string Name { get; } 
+    
   public string Host { get; }
   
   public string Path { get; } 

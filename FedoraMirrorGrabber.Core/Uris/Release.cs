@@ -12,10 +12,16 @@ public class Release : FedoraUriTemplate
   /// <para>See https://stackoverflow.com/a/53020008</para>
   /// </remarks>
   public static readonly Release Default = new Release();
-  
+
+  public override string Name => "Fedora (Release)";
+
+  #region Constructors
+
   private Release() : base(PathTemplate) 
   { }
 
   public Release(string host) : base(host, PathTemplate)
   { }
+
+  #endregion
 }

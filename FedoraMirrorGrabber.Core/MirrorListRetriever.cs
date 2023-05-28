@@ -37,10 +37,10 @@ public class MirrorListRetriever
   {
     foreach (var uriTemplate in uris)
     {
-      _logger.LogInformation("Getting list or mirrors for {Repository}", uriTemplate.GetType().Name);
+      _logger.LogInformation("Getting list or mirrors for '{Repository}'", uriTemplate.Name);
       var content = await _client.GetStringAsync(uriTemplate.Resolve(releaseVersion, baseArch));
 
-      _logger.LogInformation("Processing response from {Repository}", uriTemplate.GetType().Name);
+      _logger.LogInformation("Processing response from '{Repository}'", uriTemplate.Name);
       yield return _processor.Run(content);
     }
   }
