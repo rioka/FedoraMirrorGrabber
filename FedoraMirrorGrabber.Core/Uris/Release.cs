@@ -2,11 +2,26 @@
 
 public class Release : FedoraUriTemplate
 {
-  public readonly static string PathTemplate = $"metalink?repo=fedora-{ReleasePlaceholder}&arch={BaseArchPlaceholder}";
-  
-  public Release() : base(PathTemplate) 
+  public static readonly string PathTemplate = $"metalink?repo=fedora-{ReleasePlaceholder}&arch={BaseArchPlaceholder}";
+ 
+  /// <summary>
+  ///   Default instance
+  /// </summary>
+  /// <remarks>
+  /// <para>Do not move, order is important, or <see cref="PathTemplate"/> will not be set.</para>
+  /// <para>See https://stackoverflow.com/a/53020008</para>
+  /// </remarks>
+  public static readonly Release Default = new Release();
+
+  public override string Name => "Fedora (Release)";
+
+  #region Constructors
+
+  private Release() : base(PathTemplate) 
   { }
 
   public Release(string host) : base(host, PathTemplate)
   { }
+
+  #endregion
 }

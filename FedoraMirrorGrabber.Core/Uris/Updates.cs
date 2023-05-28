@@ -2,11 +2,19 @@
 
 public class Updates : FedoraUriTemplate
 {
-  public readonly static string PathTemplate = $"metalink?repo=updates-released-f{ReleasePlaceholder}&arch={BaseArchPlaceholder}";
+  public static readonly string PathTemplate = $"metalink?repo=updates-released-f{ReleasePlaceholder}&arch={BaseArchPlaceholder}";
   
-  public Updates() : base(PathTemplate)
+  public static readonly Updates Default = new Updates();
+
+  public override string Name => "Fedora (Updates)";
+
+  #region Constructors
+
+  private Updates() : base(PathTemplate)
   { }
   
   public Updates(string host) : base(host, PathTemplate)
   { }
+
+  #endregion
 }

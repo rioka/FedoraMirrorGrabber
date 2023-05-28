@@ -1,4 +1,5 @@
 ﻿using FedoraMirrorGrabber.Core.Uris;
+using Microsoft.Extensions.Logging;
 
 namespace FedoraMirrorGrabber.Core;
 
@@ -8,15 +9,17 @@ public class MirrorListRetriever
 
   private readonly HttpClient _client;
   private readonly ResponseProcessor _processor;
+  private readonly ILogger<MirrorListRetriever> _logger;
 
   #endregion
 
   #region Constructors
   
-  public MirrorListRetriever(HttpClient client, ResponseProcessor processor)
+  public MirrorListRetriever(HttpClient client, ResponseProcessor processor, ILogger<MirrorListRetriever> logger)
   {
     _client = client;
     _processor = processor;
+    _logger = logger;
   }
 
   #endregion
@@ -34,8 +37,10 @@ public class MirrorListRetriever
   {
     foreach (var uriTemplate in uris)
     {
+      _logger.LogInformation("Getting list or mirrors for '{Repository}'", uriTemplate.Name);
       var content = await _client.GetStringAsync(uriTemplate.Resolve(releaseVersion, baseArch));
 
+      _logger.LogInformation("Processing response from '{Repository}'", uriTemplate.Name);
       yield return _processor.Run(content);
     }
   }
