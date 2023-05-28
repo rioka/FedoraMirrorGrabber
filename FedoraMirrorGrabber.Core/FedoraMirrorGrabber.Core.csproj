@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <ItemGroup>
-        <PackageReference Include="System.IO.Abstractions" Version="19.2.18" />
-    </ItemGroup>
-    
-    <ItemGroup>
-        <InternalsVisibleTo Include="$(MSBuildProjectName).Tests" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.IO.Abstractions" Version="19.2.18"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests"/>
+  </ItemGroup>
 
 </Project>

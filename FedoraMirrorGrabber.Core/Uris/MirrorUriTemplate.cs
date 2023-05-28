@@ -5,6 +5,20 @@ public abstract class MirrorUriTemplate
   protected static readonly string ReleasePlaceholder = "{releaseVer}";
   protected static readonly string BaseArchPlaceholder = "{baseArch}";
   
+  /// <summary>
+  /// Default instances
+  /// </summary>
+  /// <remarks>Do not move, must be after <see cref="ReleasePlaceholder"/> and <see cref="BaseArchPlaceholder"/>.</remarks>
+  public static readonly IReadOnlyCollection<MirrorUriTemplate> All = new MirrorUriTemplate[]
+  {
+    Release.Default,
+    Updates.Default, 
+    RpmFusionFree.Default, 
+    RpmFusionFreeUpdates.Default, 
+    RpmFusionNonFree.Default, 
+    RpmFusionNonFreeUpdates.Default
+  };
+  
   public string Host { get; }
   
   public string Path { get; } 
