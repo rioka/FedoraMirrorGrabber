@@ -1,5 +1,8 @@
-﻿namespace FedoraMirrorGrabber.Core;
+﻿using System.Diagnostics.CodeAnalysis;
 
+namespace FedoraMirrorGrabber.Core;
+
+[SuppressMessage("NDepend", "ND1807:AvoidPublicMethodsNotPubliclyVisible", Justification = "Public methods in this internal class are not implementation details.")]
 internal static class StringExtensions
 {
   #region APIs
