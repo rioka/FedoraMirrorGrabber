@@ -42,7 +42,7 @@ public class MirrorListRetrieverTests
   public async Task GetMirrors_returns_a_list_of_mirrors()
   {
     // arrange
-    var uris = new MirrorUriTemplate[] {
+    var uris = new MirrorUriTemplateBase[] {
       new Release(_server.Url!), 
       new Updates(_server.Url!)
     };

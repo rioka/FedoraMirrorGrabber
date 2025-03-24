@@ -1,6 +1,6 @@
 ﻿namespace FedoraMirrorGrabber.Core.Uris;
 
-public abstract class RpmFusionUriTemplate : MirrorUriTemplate
+public abstract class RpmFusionUriTemplate : MirrorUriTemplateBase
 {
   private static readonly string HostName = "https://mirrors.rpmfusion.org";
 

@@ -1,6 +1,6 @@
 ﻿namespace FedoraMirrorGrabber.Core.Uris;
 
-public abstract class FedoraUriTemplate : MirrorUriTemplate
+public abstract class FedoraUriTemplate : MirrorUriTemplateBase
 {
   private static readonly string HostName = "https://mirrors.fedoraproject.org";
 
