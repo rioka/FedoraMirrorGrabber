@@ -2,7 +2,7 @@
 
 namespace FedoraMirrorGrabber.Core.Tests.Internals;
 
-public class Helpers
+internal static class Helpers
 {
   private static readonly Assembly Assembly = Assembly.GetExecutingAssembly();
   
