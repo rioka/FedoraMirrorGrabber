@@ -26,9 +26,4 @@ public abstract class MirrorUriTemplate
       .Replace(ReleasePlaceholder, $"{releaseVer}")
       .Replace(BaseArchPlaceholder, baseArch);
   }
-
-  public static IList<MirrorUriTemplate> Parse(string file, int releaseVer, string baseArch)
-  {
-    throw new NotImplementedException();
-  }
 }
