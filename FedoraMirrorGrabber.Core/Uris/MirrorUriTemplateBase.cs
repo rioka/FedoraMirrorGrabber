@@ -1,6 +1,8 @@
-﻿namespace FedoraMirrorGrabber.Core.Uris;
+﻿using System.Diagnostics.CodeAnalysis;
 
-public abstract class MirrorUriTemplate
+namespace FedoraMirrorGrabber.Core.Uris;
+
+public abstract class MirrorUriTemplateBase
 {
   protected static readonly string ReleasePlaceholder = "{releaseVer}";
   protected static readonly string BaseArchPlaceholder = "{baseArch}";
@@ -9,7 +11,7 @@ public abstract class MirrorUriTemplate
   
   public string Path { get; } 
   
-  protected MirrorUriTemplate(string host, string path)
+  protected MirrorUriTemplateBase(string host, string path)
   {
     Host = host;
     Path = path;
@@ -25,10 +27,5 @@ public abstract class MirrorUriTemplate
     return Path
       .Replace(ReleasePlaceholder, $"{releaseVer}")
       .Replace(BaseArchPlaceholder, baseArch);
-  }
-
-  public static IList<MirrorUriTemplate> Parse(string file, int releaseVer, string baseArch)
-  {
-    throw new NotImplementedException();
   }
 }

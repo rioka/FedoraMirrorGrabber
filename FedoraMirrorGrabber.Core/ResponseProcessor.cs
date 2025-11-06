@@ -1,7 +1,9 @@
-﻿using System.Xml;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Xml;
 
 namespace FedoraMirrorGrabber.Core;
 
+[SuppressMessage("NDepend", "ND1206:AStatelessClassOrStructureMightBeTurnedIntoAStaticType", Justification="...")]
 public class ResponseProcessor
 {
   #region APIs

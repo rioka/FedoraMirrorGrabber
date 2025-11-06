@@ -1,9 +1,12 @@
-﻿namespace FedoraMirrorGrabber.Core;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace FedoraMirrorGrabber.Core;
 
 internal static class StringExtensions
 {
   #region APIs
 
+  [SuppressMessage("NDepend", "ND1807:AvoidPublicMethodsNotPubliclyVisible", Justification = "Public methods in this internal class are not implementation details.")]
   public static string TrimAt(this string value, string pattern)
   {
     if (value is null)
@@ -21,6 +24,7 @@ internal static class StringExtensions
     return value[..pos];
   }
 
+  [SuppressMessage("NDepend", "ND1807:AvoidPublicMethodsNotPubliclyVisible", Justification = "Public methods in this internal class are not implementation details.")]
   public static string EscapeForRegex(this string value)
   {
     if (value is null)
