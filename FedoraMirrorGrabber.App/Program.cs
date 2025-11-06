@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 internal partial class Program
 {
-  private static ILoggerFactory _loggerFactory;
+  private static ILoggerFactory _loggerFactory = null!;
   private static ILogger<Program> _logger = null!;
 
   public static async Task Main(string[] args)
