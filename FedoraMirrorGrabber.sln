@@ -6,8 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E4201D9F-1C93-4824-9D0D-0BF378C1FAD4}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		.gitignore = .gitignore
-		Directory.Build.props = Directory.Build.props
 		LICENSE = LICENSE
 		Nuget.config = Nuget.config
 		README.md = README.md
@@ -19,6 +17,18 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FedoraMirrorGrabber.Core.Tests", "FedoraMirrorGrabber.Core.Tests\FedoraMirrorGrabber.Core.Tests.csproj", "{80D8EB4E-23C0-4F7A-B7D9-F1AB0D957B41}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FedoraMirrorGrabber.App", "FedoraMirrorGrabber.App\FedoraMirrorGrabber.App.csproj", "{2EC2BF01-AFB5-480E-B5AA-493E32348944}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{6EBD5C00-555F-43AC-A272-A118D18CD388}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "git", "git", "{9B177574-B979-4B5C-A5BD-CCB191B2FCBC}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.gitattributes = .gitattributes
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,5 +54,9 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5DA043EE-1454-4BE4-8CFB-5467FE7B20E4}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6EBD5C00-555F-43AC-A272-A118D18CD388} = {E4201D9F-1C93-4824-9D0D-0BF378C1FAD4}
+		{9B177574-B979-4B5C-A5BD-CCB191B2FCBC} = {E4201D9F-1C93-4824-9D0D-0BF378C1FAD4}
 	EndGlobalSection
 EndGlobal
