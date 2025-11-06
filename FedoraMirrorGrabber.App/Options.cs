@@ -16,7 +16,7 @@ internal class Options
 
   [Option('o', "output-file", HelpText = "Name of the file where data is saved to", Default = "fedora.db")]
   public string SaveTo { get; set; } = "fedora.db";
-  
+
   [Option('p', "protocol", HelpText = "Type of mirrors to include", Separator = ',')]
-  public IEnumerable<RepositoryType>? Protocols { get; set; }   
+  public IEnumerable<RepositoryType>? Protocols { get; set; }
 }

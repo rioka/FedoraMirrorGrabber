@@ -15,7 +15,7 @@ public class DbBuilder
   }
 
   #endregion
-  
+
   #region APIs
 
   public async Task Save(string saveTo, string baseArch, int releaseVersion, IEnumerable<Mirror> mirrors, Func<Mirror, bool>? selector = null)

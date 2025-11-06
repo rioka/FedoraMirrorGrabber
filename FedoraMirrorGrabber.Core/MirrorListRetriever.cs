@@ -14,7 +14,7 @@ public class MirrorListRetriever
   #endregion
 
   #region Constructors
-  
+
   public MirrorListRetriever(HttpClient client, ResponseProcessor processor, ILogger<MirrorListRetriever> logger)
   {
     _client = client;

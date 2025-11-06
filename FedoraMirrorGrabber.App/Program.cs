@@ -12,7 +12,7 @@ internal partial class Program
     using (_loggerFactory = LoggerFactory.Create(builder => builder.AddConsole()))
     {
       _logger = _loggerFactory.CreateLogger<Program>();
-      
+
       using (var parser = new Parser(config => {
                config.CaseInsensitiveEnumValues = true;
                // temporary, or I do not get help since not using Parser.Default

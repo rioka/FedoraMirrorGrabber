@@ -18,13 +18,13 @@ public abstract class MirrorUriTemplate
     RpmFusionNonFree.Default, 
     RpmFusionNonFreeUpdates.Default
   };
-  
+
   public abstract string Name { get; } 
-    
+
   public string Host { get; }
-  
+
   public string Path { get; } 
-  
+
   protected MirrorUriTemplate(string host, string path)
   {
     Host = host;

@@ -16,7 +16,7 @@ internal class Executor
     _builder = builder;
     _logger = logger;
   }
-  
+
   public async Task<int> Run(Options options)
   {
     var allMirrors = new List<Mirror>();

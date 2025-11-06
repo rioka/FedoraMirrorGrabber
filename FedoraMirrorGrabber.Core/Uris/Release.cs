@@ -3,7 +3,7 @@
 public class Release : FedoraUriTemplate
 {
   public static readonly string PathTemplate = $"metalink?repo=fedora-{ReleasePlaceholder}&arch={BaseArchPlaceholder}";
- 
+
   /// <summary>
   ///   Default instance
   /// </summary>
