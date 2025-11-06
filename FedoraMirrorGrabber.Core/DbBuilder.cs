@@ -20,7 +20,6 @@ public class DbBuilder
 
   public async Task Save(string saveTo, string baseArch, int releaseVersion, IEnumerable<Mirror> mirrors, Func<Mirror, bool>? selector = null)
   {
-
     await using (var stream = _fileSystem.File.CreateText(saveTo))
     {
       selector ??= _ => true;
