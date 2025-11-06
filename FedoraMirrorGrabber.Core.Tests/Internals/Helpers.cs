@@ -8,7 +8,8 @@ public class Helpers
 
   public static string GetResource(string name)
   {
-    using (var stream = Assembly.GetManifestResourceStream(name))
+    using (var stream = Assembly.GetManifestResourceStream(name)
+           ?? throw new NotSupportedException($"Embedded resource '{name}' not found"))
     {
       using (var reader = new StreamReader(stream))
       {
