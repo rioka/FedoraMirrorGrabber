@@ -11,11 +11,11 @@
 ## Improvements
 
 Add support for
-- fedora-updates (https://mirrors.fedoraproject.org/metalink?repo=updates-released-f37&arch=x86_64)
-- rpmfusion-free (https://mirrors.rpmfusion.org/metalink?repo=free-fedora-37&arch=x86_64)
-- rpmfusion-free-updates (https://mirrors.rpmfusion.org/metalink?repo=free-fedora-updates-released-37&arch=x86_64)
-- rpmfusion-nonfree (https://mirrors.rpmfusion.org/metalink?repo=nonfree-fedora-37&arch=x86_64)
-- rpmfusion-nonfree-updates (https://mirrors.rpmfusion.org/metalink?repo=nonfree-fedora-updates-released-37&arch=x86_64)
+- ✅ ~~fedora-updates (https://mirrors.fedoraproject.org/metalink?repo=updates-released-f37&arch=x86_64)~~
+- ✅ ~~rpmfusion-free (https://mirrors.rpmfusion.org/metalink?repo=free-fedora-37&arch=x86_64)~~
+- ✅ ~~rpmfusion-free-updates (https://mirrors.rpmfusion.org/metalink?repo=free-fedora-updates-released-37&arch=x86_64)~~
+- ✅ ~~rpmfusion-nonfree (https://mirrors.rpmfusion.org/metalink?repo=nonfree-fedora-37&arch=x86_64)~~
+- ✅ ~~rpmfusion-nonfree-updates (https://mirrors.rpmfusion.org/metalink?repo=nonfree-fedora-updates-released-37&arch=x86_64)~~
 
 ## Important notes
 
