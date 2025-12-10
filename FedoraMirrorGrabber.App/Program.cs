@@ -1,5 +1,6 @@
 ﻿using CommandLine;
 using FedoraMirrorGrabber.App;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 internal partial class Program
@@ -9,7 +10,16 @@ internal partial class Program
 
   public static async Task Main(string[] args)
   {
-    using (_loggerFactory = LoggerFactory.Create(builder => builder.AddConsole()))
+    var configuration = new ConfigurationBuilder()
+      .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+      .AddEnvironmentVariables("FMG_")
+      .Build();
+    
+    using (_loggerFactory = LoggerFactory.Create(builder => {
+             builder
+               .AddConfiguration(configuration.GetSection("Logging"))
+               .AddConsole();
+           }))
     {
       _logger = _loggerFactory.CreateLogger<Program>();
 
