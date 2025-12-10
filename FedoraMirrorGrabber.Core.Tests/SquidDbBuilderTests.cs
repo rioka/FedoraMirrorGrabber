@@ -4,16 +4,16 @@ using System.IO.Abstractions.TestingHelpers;
 namespace FedoraMirrorGrabber.Core.Tests;
 
 [TestFixture]
-public class DbBuilderTests
+public class SquidDbBuilderTests
 {
   private IFileSystem _fileSystem; 
-  private DbBuilder _sut;
+  private SquidDbBuilder _sut;
 
   [SetUp]
   public void BeforeEach()
   {
     _fileSystem = new MockFileSystem();
-    _sut = new DbBuilder(_fileSystem);
+    _sut = new SquidDbBuilder(_fileSystem);
   }
 
   [Test]

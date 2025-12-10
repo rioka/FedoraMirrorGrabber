@@ -3,13 +3,13 @@ using System.Text;
 
 namespace FedoraMirrorGrabber.Core;
 
-public class DbBuilder
+public class SquidDbBuilder
 {
   private readonly IFileSystem _fileSystem;
 
   #region Constructors
 
-  public DbBuilder(IFileSystem fileSystem)
+  public SquidDbBuilder(IFileSystem fileSystem)
   {
     _fileSystem = fileSystem;
   }

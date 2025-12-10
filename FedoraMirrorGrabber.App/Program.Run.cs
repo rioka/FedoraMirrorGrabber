@@ -29,7 +29,7 @@ internal partial class Program
     _logger.LogInformation("Saving database to {OutputFile}", options.SaveTo);
 
     var fs = new FileSystem();
-    var builder = new DbBuilder(fs);
+    var builder = new SquidDbBuilder(fs);
     await builder.Save(options.SaveTo, options.Architecture, options.ReleaseVersion, allMirrors, filter);
 
     _logger.LogInformation("Data saved to {OutputFile}", options.SaveTo);
