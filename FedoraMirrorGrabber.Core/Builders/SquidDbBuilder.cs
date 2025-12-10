@@ -1,7 +1,7 @@
 ﻿using System.IO.Abstractions;
 using System.Text;
 
-namespace FedoraMirrorGrabber.Core;
+namespace FedoraMirrorGrabber.Core.Builders;
 
 public class SquidDbBuilder : IDbBuilder
 {

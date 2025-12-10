@@ -1,4 +1,5 @@
-﻿using System.IO.Abstractions;
+﻿using FedoraMirrorGrabber.Core.Builders;
+using System.IO.Abstractions;
 using System.IO.Abstractions.TestingHelpers;
 
 namespace FedoraMirrorGrabber.Core.Tests;

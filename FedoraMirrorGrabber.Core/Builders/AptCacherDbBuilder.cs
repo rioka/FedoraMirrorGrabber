@@ -1,6 +1,6 @@
 ﻿using System.IO.Abstractions;
 
-namespace FedoraMirrorGrabber.Core;
+namespace FedoraMirrorGrabber.Core.Builders;
 
 public class AptCacherDbBuilder : IDbBuilder
 {

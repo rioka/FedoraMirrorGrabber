@@ -1,5 +1,6 @@
 ﻿using FedoraMirrorGrabber.App;
 using FedoraMirrorGrabber.Core;
+using FedoraMirrorGrabber.Core.Builders;
 using FedoraMirrorGrabber.Core.Uris;
 using Microsoft.Extensions.Logging;
 using System.IO.Abstractions;
