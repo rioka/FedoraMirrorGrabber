@@ -3,12 +3,17 @@ using FedoraMirrorGrabber.Core;
 using FedoraMirrorGrabber.Core.Uris;
 using Microsoft.Extensions.Logging;
 using System.IO.Abstractions;
+using System.Reflection;
 
 internal partial class Program
 {
   public static async Task Run(Options options)
   {
-    _logger.LogInformation("Generating database for Squid StoreId for Fedora {ReleaseVersion} ({Architecture})", options.ReleaseVersion, options.Architecture);
+    _logger.LogInformation(
+      "Generating database for {Proxy} for Fedora {ReleaseVersion} ({Architecture})", 
+      GetProxy(options.ProxyType), 
+      options.ReleaseVersion, 
+      options.Architecture);
 
     var client = new HttpClient();
     var retriever = new MirrorListRetriever(client, new ResponseProcessor(), _loggerFactory.CreateLogger<MirrorListRetriever>());
@@ -33,5 +38,14 @@ internal partial class Program
     await builder.Save(options.SaveTo, options.Architecture, options.ReleaseVersion, allMirrors, filter);
 
     _logger.LogInformation("Data saved to {OutputFile}", options.SaveTo);
+  }
+
+  private static string GetProxy(ProxyType proxyType)
+  {
+    return typeof(ProxyType)
+      .GetMember(proxyType.ToString())
+      .FirstOrDefault(mi => mi.DeclaringType == typeof(ProxyType))
+      ?.GetCustomAttribute<ProxyAttribute>()
+      ?.Name ?? throw new NotSupportedException($"Unknown proxy type: {proxyType}");
   }
 }
