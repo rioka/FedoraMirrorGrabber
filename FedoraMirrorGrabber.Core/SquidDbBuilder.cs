@@ -3,7 +3,7 @@ using System.Text;
 
 namespace FedoraMirrorGrabber.Core;
 
-public class SquidDbBuilder
+public class SquidDbBuilder : IDbBuilder
 {
   private readonly IFileSystem _fileSystem;
 
