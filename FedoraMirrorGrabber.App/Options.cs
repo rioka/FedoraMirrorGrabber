@@ -3,7 +3,7 @@ using FedoraMirrorGrabber.Core;
 
 namespace FedoraMirrorGrabber.App;
 
-internal class Options  
+internal class Options
 {
   // [Option('u', "url", HelpText = "Url to get list of mirrors", Default = "https://mirrors.fedoraproject.org/")]
   // public string Url { get; set; }

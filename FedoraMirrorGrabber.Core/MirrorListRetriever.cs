@@ -38,7 +38,7 @@ public class MirrorListRetriever
     foreach (var uriTemplate in uris)
     {
       var url = uriTemplate.Resolve(releaseVersion, baseArch);
-      
+
       _logger.LogInformation("Getting list or mirrors for '{Repository}'", uriTemplate.Name);
       _logger.LogTrace("Getting '{URL}'", url);
       var content = await _client.GetStringAsync(url);

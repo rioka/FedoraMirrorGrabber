@@ -9,7 +9,7 @@ public class StringExtensionsTests
     // arrange
     var pattern = "/x86_64";
     var sut = "http://creeperhost.mm.fcix.net/fedora/linux/releases/37/Everything/x86_64/os/repodata/repomd.xml";
-    
+
     // act
     var result = sut.TrimAt(pattern);
 
@@ -22,7 +22,7 @@ public class StringExtensionsTests
   {
     var pattern = "/x86_64";
     string sut = null!;
-    
+
     // act
     Func<string> action = () => sut.TrimAt(pattern);
 
@@ -36,7 +36,7 @@ public class StringExtensionsTests
     // arrange
     var pattern = "/arm";
     var sut = "http://creeperhost.mm.fcix.net/fedora/linux/releases/37/Everything/x86_64/os/repodata/repomd.xml";
-    
+
     // act
     var result = sut.TrimAt(pattern);
 
@@ -49,10 +49,10 @@ public class StringExtensionsTests
   {
     // arrange
     var sut = "http://creeperhost.mm.fcix.net/fedora/linux/releases/37/Everything";
-    
+
     // act
     var result = sut.EscapeForRegex();
-    
+
     // assert
     Assert.That(result, Is.EqualTo(@"http:\/\/creeperhost\.mm\.fcix\.net\/fedora\/linux\/releases\/37\/Everything"));
   }

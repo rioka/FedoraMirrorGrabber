@@ -14,7 +14,7 @@ internal partial class Program
       .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
       .AddEnvironmentVariables("FMG_")
       .Build();
-    
+
     using (_loggerFactory = LoggerFactory.Create(builder => {
              builder
                .AddConfiguration(configuration.GetSection("Logging"))

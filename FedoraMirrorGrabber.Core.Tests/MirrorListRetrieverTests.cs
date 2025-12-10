@@ -23,7 +23,7 @@ public class MirrorListRetrieverTests
   #endregion
 
   #region Setup & teardown
-  
+
   [OneTimeSetUp]
   public void BeforeAll()
   {
@@ -35,7 +35,7 @@ public class MirrorListRetrieverTests
   {
     _loggerFactory.Dispose();
   }
-  
+
   [SetUp]
   public void BeforeEach()
   {

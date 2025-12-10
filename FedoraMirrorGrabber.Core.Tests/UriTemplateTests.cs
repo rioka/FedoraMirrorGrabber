@@ -17,7 +17,7 @@ public class UriTemplateTests
     // assert
     Assert.That(result, Is.EqualTo(new Uri("https://mirrors.fedoraproject.org/metalink?repo=fedora-37&arch=arm")));
   }
-  
+
   [Test]
   public void Release_resolves_to_expected_url_with_a_custom_host()
   {
@@ -30,7 +30,7 @@ public class UriTemplateTests
     // assert
     Assert.That(result, Is.EqualTo(new Uri("http://localhost/metalink?repo=fedora-37&arch=arm")));
   }
-  
+
   [Test]
   public void Updates_resolves_to_expected_url()
   {
@@ -43,7 +43,7 @@ public class UriTemplateTests
     // assert
     Assert.That(result, Is.EqualTo(new Uri("https://mirrors.fedoraproject.org/metalink?repo=updates-released-f37&arch=arm")));
   }
-  
+
   [Test]
   public void Updates_resolves_to_expected_url_with_a_custom_host()
   {
@@ -56,7 +56,7 @@ public class UriTemplateTests
     // assert
     Assert.That(result, Is.EqualTo(new Uri("http://localhost/metalink?repo=updates-released-f37&arch=arm")));
   }
-  
+
   [Test]
   public void RpmFusionFree_resolves_to_expected_url()
   {
@@ -69,7 +69,7 @@ public class UriTemplateTests
     // assert
     Assert.That(result, Is.EqualTo(new Uri("https://mirrors.rpmfusion.org/metalink?repo=free-fedora-37&arch=arm")));
   }
-  
+
   [Test]
   public void RpmFusionFree_resolves_to_expected_url_with_a_custom_host()
   {
@@ -82,7 +82,7 @@ public class UriTemplateTests
     // assert
     Assert.That(result, Is.EqualTo(new Uri("http://localhost/metalink?repo=free-fedora-37&arch=arm")));
   }
-  
+
   [Test]
   public void RpmFusionNonFree_resolves_to_expected_url()
   {
@@ -95,7 +95,7 @@ public class UriTemplateTests
     // assert
     Assert.That(result, Is.EqualTo(new Uri("https://mirrors.rpmfusion.org/metalink?repo=nonfree-fedora-37&arch=arm")));
   }
-  
+
   [Test]
   public void RpmFusionNonFree_resolves_to_expected_url_with_a_custom_host()
   {
@@ -108,7 +108,7 @@ public class UriTemplateTests
     // assert
     Assert.That(result, Is.EqualTo(new Uri("http://localhost/metalink?repo=nonfree-fedora-37&arch=arm")));
   }
-  
+
   [Test]
   public void RpmFusionFreeUpdates_resolves_to_expected_url()
   {
@@ -121,7 +121,7 @@ public class UriTemplateTests
     // assert
     Assert.That(result, Is.EqualTo(new Uri("https://mirrors.rpmfusion.org/metalink?repo=free-fedora-updates-released-37&arch=arm")));
   }
-  
+
   [Test]
   public void RpmFusionFreeUpdates_resolves_to_expected_url_with_a_custom_host()
   {
@@ -134,7 +134,7 @@ public class UriTemplateTests
     // assert
     Assert.That(result, Is.EqualTo(new Uri("http://localhost/metalink?repo=free-fedora-updates-released-37&arch=arm")));
   }
-  
+
   [Test]
   public void RpmFusionNonFreeUpdates_resolves_to_expected_url()
   {
@@ -147,7 +147,7 @@ public class UriTemplateTests
     // assert
     Assert.That(result, Is.EqualTo(new Uri("https://mirrors.rpmfusion.org/metalink?repo=nonfree-fedora-updates-released-37&arch=arm")));
   }
-  
+
   [Test]
   public void RpmFusionNonFreeUpdates_resolves_to_expected_url_with_a_custom_host()
   {
