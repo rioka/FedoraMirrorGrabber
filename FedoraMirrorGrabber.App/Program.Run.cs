@@ -35,7 +35,7 @@ internal partial class Program
     _logger.LogInformation("Saving database to {OutputFile}", options.SaveTo);
 
     var fs = new FileSystem();
-    var builder = new SquidDbBuilder(fs);
+    var builder = GetBuilder(options.ProxyType, fs);
     await builder.Save(options.SaveTo, options.Architecture, options.ReleaseVersion, allMirrors, filter);
 
     _logger.LogInformation("Data saved to {OutputFile}", options.SaveTo);
@@ -48,5 +48,14 @@ internal partial class Program
       .FirstOrDefault(mi => mi.DeclaringType == typeof(ProxyType))
       ?.GetCustomAttribute<ProxyAttribute>()
       ?.Name ?? throw new NotSupportedException($"Unknown proxy type: {proxyType}");
+  }
+
+  private static IDbBuilder GetBuilder(ProxyType proxyType, FileSystem fs)
+  {
+    return proxyType switch {
+      ProxyType.Squid => new SquidDbBuilder(fs),
+      ProxyType.AptCacher => new AptCacherDbBuilder(fs),
+      _ => throw new NotSupportedException($"Unknown proxy type: {proxyType}")
+    };
   }
 }
