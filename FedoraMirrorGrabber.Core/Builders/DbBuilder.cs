@@ -1,4 +1,5 @@
-﻿using System.IO.Abstractions;
+﻿using Microsoft.Extensions.Logging;
+using System.IO.Abstractions;
 
 namespace FedoraMirrorGrabber.Core.Builders;
 
@@ -6,11 +7,13 @@ public class DbBuilder
 {
   private readonly IFileSystem _fileSystem;
   private readonly IUrlProcessor _urlProcessor;
+  private readonly ILogger<DbBuilder> _logger;
 
-  public DbBuilder(IFileSystem fileSystem, IUrlProcessor urlProcessor)
+  public DbBuilder(IFileSystem fileSystem, IUrlProcessor urlProcessor, ILogger<DbBuilder> logger)
   {
     _fileSystem = fileSystem;
     _urlProcessor = urlProcessor;
+    _logger = logger;
   }
 
   public async Task Save(string saveTo, IEnumerable<Mirror> mirrors, Func<Mirror, bool>? selector = null)
@@ -28,9 +31,8 @@ public class DbBuilder
         }
         else
         {
-          // TODO log warning
+          _logger.LogWarning("Skipping unrecognized url '{Url}' (using {Processor})", mirror.Url, _urlProcessor.GetType().Name);
         }
-        
       }
 
       await stream.FlushAsync();
