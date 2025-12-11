@@ -45,7 +45,6 @@ public class SquidUrlProcessor : IUrlProcessor
     return regex
       .Append('\t')  // separate pattern from replacement 
       .Append($"http://repo.mirrors.squid.internal/fedora/{releaseVer}/$1") // store ID replacement pattern
-      .Append('\n')
       .ToString();
   }    
 
