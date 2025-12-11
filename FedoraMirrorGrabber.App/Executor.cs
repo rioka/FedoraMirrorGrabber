@@ -7,10 +7,10 @@ namespace FedoraMirrorGrabber.App;
 internal class Executor
 {
   private readonly MirrorListRetriever _retriever;
-  private readonly DbBuilder _builder;
+  private readonly IDbBuilder _builder;
   private readonly ILogger<Executor> _logger;
 
-  public Executor(MirrorListRetriever retriever, DbBuilder builder, ILogger<Executor> logger)
+  public Executor(MirrorListRetriever retriever, IDbBuilder builder, ILogger<Executor> logger)
   {
     _retriever = retriever;
     _builder = builder;

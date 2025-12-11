@@ -19,4 +19,7 @@ internal class Options
 
   [Option('p', "protocol", HelpText = "Type of mirrors to include", Separator = ',')]
   public IEnumerable<RepositoryType>? Protocols { get; set; }
+
+  [Option('x', "proxy-type", HelpText = "Type of proxy", Default = ProxyType.Squid)]
+  public ProxyType ProxyType { get; set; } 
 }

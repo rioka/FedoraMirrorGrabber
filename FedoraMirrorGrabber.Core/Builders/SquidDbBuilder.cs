@@ -1,15 +1,15 @@
 ﻿using System.IO.Abstractions;
 using System.Text;
 
-namespace FedoraMirrorGrabber.Core;
+namespace FedoraMirrorGrabber.Core.Builders;
 
-public class DbBuilder
+public class SquidDbBuilder : IDbBuilder
 {
   private readonly IFileSystem _fileSystem;
 
   #region Constructors
 
-  public DbBuilder(IFileSystem fileSystem)
+  public SquidDbBuilder(IFileSystem fileSystem)
   {
     _fileSystem = fileSystem;
   }
@@ -30,7 +30,7 @@ public class DbBuilder
       {
         var url = mirror.Url;
         url = url
-          .TrimAt(pattern)
+          .TrimAt(pattern).Result
           .EscapeForRegex();
 
         var regex = BuildRegex(url, baseArch);
