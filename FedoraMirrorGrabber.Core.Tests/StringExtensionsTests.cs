@@ -11,7 +11,7 @@ public class StringExtensionsTests
     var sut = "http://creeperhost.mm.fcix.net/fedora/linux/releases/37/Everything/x86_64/os/repodata/repomd.xml";
 
     // act
-    var result = sut.TrimAt(pattern);
+    var result = sut.TrimAt(pattern).Result;
 
     // assert
     Assert.That(result, Is.EqualTo("http://creeperhost.mm.fcix.net/fedora/linux/releases/37/Everything"));
@@ -24,7 +24,7 @@ public class StringExtensionsTests
     string sut = null!;
 
     // act
-    Func<string> action = () => sut.TrimAt(pattern);
+    Func<(string, bool)> action = () => sut.TrimAt(pattern);
 
     // assert
     Assert.Throws<ArgumentNullException>(() => action());
@@ -38,7 +38,7 @@ public class StringExtensionsTests
     var sut = "http://creeperhost.mm.fcix.net/fedora/linux/releases/37/Everything/x86_64/os/repodata/repomd.xml";
 
     // act
-    var result = sut.TrimAt(pattern);
+    var result = sut.TrimAt(pattern).Result;
 
     // assert
     Assert.That(result, Is.EqualTo(sut));

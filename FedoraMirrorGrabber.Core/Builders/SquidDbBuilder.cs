@@ -30,7 +30,7 @@ public class SquidDbBuilder : IDbBuilder
       {
         var url = mirror.Url;
         url = url
-          .TrimAt(pattern)
+          .TrimAt(pattern).Result
           .EscapeForRegex();
 
         var regex = BuildRegex(url, baseArch);

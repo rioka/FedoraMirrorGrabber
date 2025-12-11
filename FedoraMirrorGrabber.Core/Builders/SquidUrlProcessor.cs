@@ -20,7 +20,7 @@ public class SquidUrlProcessor : IUrlProcessor
   public string Process(string url)
   {
     url = url
-      .TrimAt(_pattern)
+      .TrimAt(_pattern).Result
       .EscapeForRegex();
 
     var regex = BuildRegex(url, _baseArch);

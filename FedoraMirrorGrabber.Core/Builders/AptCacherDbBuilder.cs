@@ -23,7 +23,7 @@ public class AptCacherDbBuilder : IDbBuilder
       foreach (var mirror in mirrors
                  .Where(m => selector(m)))
       {
-        await stream.WriteLineAsync(mirror.Url.TrimAt(pattern, 1));
+        await stream.WriteLineAsync(mirror.Url.TrimAt(pattern, 1).Result);
       }
 
       await stream.FlushAsync();
