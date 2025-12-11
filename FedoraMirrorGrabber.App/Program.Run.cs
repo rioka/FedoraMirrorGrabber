@@ -34,8 +34,8 @@ internal partial class Program
 
     _logger.LogInformation("Saving database to {OutputFile}", options.SaveTo);
 
-    var builder = GetBuilder(options.ProxyType);
-    await builder.Save(options.SaveTo, options.Architecture, options.ReleaseVersion, allMirrors, filter);
+    var builder = GetBuilder(options.ProxyType, options.Architecture, options.ReleaseVersion);
+    await builder.Save(options.SaveTo, allMirrors, filter);
 
     _logger.LogInformation("Data saved to {OutputFile}", options.SaveTo);
   }
@@ -49,14 +49,16 @@ internal partial class Program
       ?.Name ?? throw new NotSupportedException($"Unknown proxy type: {proxyType}");
   }
 
-  private static IDbBuilder GetBuilder(ProxyType proxyType)
+  private static DbBuilder GetBuilder(ProxyType proxyType, string baseArch, int releaseVersion)
   {
     var fs = new FileSystem();
 
-    return proxyType switch {
-      ProxyType.Squid => new SquidDbBuilder(fs),
-      ProxyType.AptCacher => new AptCacherDbBuilder(fs),
+    IUrlProcessor processor = proxyType switch {
+      ProxyType.Squid => new SquidUrlProcessor(baseArch, releaseVersion),
+      ProxyType.AptCacher => new AptCacherUrlProcessor(releaseVersion),
       _ => throw new NotSupportedException($"Unknown proxy type: {proxyType}")
     };
+
+    return new DbBuilder(fs, processor);
   }
 }
