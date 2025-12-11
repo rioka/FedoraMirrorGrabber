@@ -1,4 +1,5 @@
 ﻿using FedoraMirrorGrabber.Core.Builders;
+using Microsoft.Extensions.Logging.Testing;
 using System.IO.Abstractions;
 using System.IO.Abstractions.TestingHelpers;
 
@@ -8,14 +9,15 @@ namespace FedoraMirrorGrabber.Core.Tests;
 public class DbBuilderTests
 {
   private IFileSystem _fileSystem;
-
+  private FakeLogger<DbBuilder> _logger;
   private DbBuilder _sut;
 
   [SetUp]
   public void BeforeEach()
   {
     _fileSystem = new MockFileSystem();
-    _sut = new DbBuilder(_fileSystem, new FakeProcessor());
+    _logger = new FakeLogger<DbBuilder>();
+    _sut = new DbBuilder(_fileSystem, new FakeProcessor(), _logger);
   }
 
   [Test]

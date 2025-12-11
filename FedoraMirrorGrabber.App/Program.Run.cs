@@ -59,6 +59,6 @@ internal partial class Program
       _ => throw new NotSupportedException($"Unknown proxy type: {proxyType}")
     };
 
-    return new DbBuilder(fs, processor);
+    return new DbBuilder(fs, processor, _loggerFactory.CreateLogger<DbBuilder>());
   }
 }
