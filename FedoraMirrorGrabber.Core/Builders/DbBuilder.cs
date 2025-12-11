@@ -2,33 +2,31 @@
 
 namespace FedoraMirrorGrabber.Core.Builders;
 
-public class AptCacherDbBuilder : IDbBuilder
+public class DbBuilder
 {
   private readonly IFileSystem _fileSystem;
+  private readonly IUrlProcessor _urlProcessor;
 
-  public AptCacherDbBuilder(IFileSystem fileSystem)
+  public DbBuilder(IFileSystem fileSystem, IUrlProcessor urlProcessor)
   {
     _fileSystem = fileSystem;
+    _urlProcessor = urlProcessor;
   }
 
-  #region IDbBuilder
-
-  public async Task Save(string saveTo, string baseArch, int releaseVersion, IEnumerable<Mirror> mirrors, Func<Mirror, bool>? selector = null)
+  public async Task Save(string saveTo, IEnumerable<Mirror> mirrors, Func<Mirror, bool>? selector = null)
   {
     await using (var stream = _fileSystem.File.CreateText(saveTo))
     {
       selector ??= _ => true;
-      var pattern = $"/releases/{releaseVersion}/";
 
       foreach (var mirror in mirrors
                  .Where(m => selector(m)))
       {
-        await stream.WriteLineAsync(mirror.Url.TrimAt(pattern, 1));
+        await stream.WriteLineAsync(_urlProcessor.Process(mirror.Url));
       }
 
       await stream.FlushAsync();
     }
   }
 
-  #endregion
 }
