@@ -31,7 +31,7 @@ public class SquidUrlProcessorTests
   public void Url_is_replaced_by_regular_expression(string url, string regex)
   {
     // act
-    var result = _sut.Process(url);
+    var found = _sut.TryProcess(url, out var result);
     
     // assert
     Assert.That(result, Is.EqualTo(regex));

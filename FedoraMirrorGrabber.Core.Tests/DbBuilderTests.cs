@@ -62,7 +62,11 @@ public class DbBuilderTests
 
   class FakeProcessor : IUrlProcessor
   {
-    public string Process(string url) => $"*|{url}|*";
+    public bool TryProcess(string url, out string? result)
+    {
+      result = $"*|{url}|*";
+      return true;
+    }
   }
 
   #endregion

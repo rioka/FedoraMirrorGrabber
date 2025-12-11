@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace FedoraMirrorGrabber.Core.Builders;
 
 public class AptCacherUrlProcessor : IUrlProcessor
@@ -14,18 +16,25 @@ public class AptCacherUrlProcessor : IUrlProcessor
 
   #region IUrlProcessor
 
-  public string Process(string url)
+  public bool TryProcess(string url, [NotNullWhen(true)] out string? processedUrl)
   {
+    if (url is null)
+    {
+      throw new ArgumentNullException(nameof(url));
+    }
+
     foreach (var pattern in _patterns)
     {
       var (result, found) = url.TrimAt(pattern, 1);
       if (found)
       {
-        return result;
+        processedUrl = result;
+        return true;
       }
     }
     
-    return url;
+    processedUrl = default;
+    return false;
   }
 
   #endregion

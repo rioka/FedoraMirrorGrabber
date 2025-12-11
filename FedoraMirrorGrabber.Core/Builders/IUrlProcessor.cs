@@ -2,5 +2,5 @@
 
 public interface IUrlProcessor
 {
-  string Process(string url);    
+  bool TryProcess(string url, out string? result);    
 }

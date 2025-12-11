@@ -22,7 +22,15 @@ public class DbBuilder
       foreach (var mirror in mirrors
                  .Where(m => selector(m)))
       {
-        await stream.WriteLineAsync(_urlProcessor.Process(mirror.Url));
+        if (_urlProcessor.TryProcess(mirror.Url, out var result))
+        {
+          await stream.WriteLineAsync(result);
+        }
+        else
+        {
+          // TODO log warning
+        }
+        
       }
 
       await stream.FlushAsync();

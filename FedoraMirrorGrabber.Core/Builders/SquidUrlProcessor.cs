@@ -17,14 +17,20 @@ public class SquidUrlProcessor : IUrlProcessor
 
   #region IUrlProcessor
 
-  public string Process(string url)
+  public bool TryProcess(string url, out string? result)
   {
-    url = url
-      .TrimAt(_pattern).Result
-      .EscapeForRegex();
+    var (trimmedUrl, patternFound) = url.TrimAt(_pattern);
+    if (patternFound)
+    {
+      trimmedUrl = trimmedUrl.EscapeForRegex();
 
-    var regex = BuildRegex(url, _baseArch);
-    return BuildStoreIdEntry(regex, _releaseVersion);
+      var regex = BuildRegex(trimmedUrl, _baseArch);
+      result = BuildStoreIdEntry(regex, _releaseVersion);
+      return true;
+    }
+
+    result = default;
+    return false;
   }
 
   #endregion
