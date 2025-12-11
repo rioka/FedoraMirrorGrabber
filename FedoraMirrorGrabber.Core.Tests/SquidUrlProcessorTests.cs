@@ -25,14 +25,14 @@ public class SquidUrlProcessorTests
   {
     _sut = new SquidUrlProcessor("x86_64", 37);
   }
-  
+
   [Test]
   [TestCaseSource(nameof(ReleaseUrlsTestCases))]
   public void Url_is_replaced_by_regular_expression(string url, string regex)
   {
     // act
     var found = _sut.TryProcess(url, out var result);
-    
+
     // assert
     Assert.That(result, Is.EqualTo(regex));
   }

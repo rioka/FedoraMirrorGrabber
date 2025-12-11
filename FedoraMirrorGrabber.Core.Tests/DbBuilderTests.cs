@@ -8,7 +8,7 @@ namespace FedoraMirrorGrabber.Core.Tests;
 public class DbBuilderTests
 {
   private IFileSystem _fileSystem;
-  
+
   private DbBuilder _sut;
 
   [SetUp]
@@ -37,7 +37,6 @@ public class DbBuilderTests
     Assert.That(lines[1], Is.EqualTo("*|https://mirror.vpsnet.com/fedora/linux/releases/37/Everything/x86_64/os/repodata/repomd.xml|*"));
   }
 
-
   [Test]
   public async Task Save_creates_a_file_applying_selector()
   {
@@ -57,7 +56,7 @@ public class DbBuilderTests
     Assert.That(lines[0], Is.EqualTo("*|http://creeperhost.mm.fcix.net/fedora/linux/releases/37/Everything/x86_64/os/repodata/repomd.xml|*"));
     Assert.That(lines[1], Is.EqualTo("*|http://distrib-coffee.ipsl.jussieu.fr/pub/linux/fedora/linux/releases/37/Everything/x86_64/os/repodata/repomd.xml|*"));
   }  
-  
+
   #region Internals
 
   class FakeProcessor : IUrlProcessor

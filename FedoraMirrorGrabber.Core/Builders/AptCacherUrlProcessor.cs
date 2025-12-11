@@ -32,7 +32,7 @@ public class AptCacherUrlProcessor : IUrlProcessor
         return true;
       }
     }
-    
+
     processedUrl = default;
     return false;
   }
