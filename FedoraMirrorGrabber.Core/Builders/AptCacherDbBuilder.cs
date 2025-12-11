@@ -18,15 +18,12 @@ public class AptCacherDbBuilder : IDbBuilder
     await using (var stream = _fileSystem.File.CreateText(saveTo))
     {
       selector ??= _ => true;
-      // TODO check if this is the correct tag to look for
-      var pattern = $"/{baseArch}";
+      var pattern = $"/releases/{releaseVersion}/";
 
       foreach (var mirror in mirrors
                  .Where(m => selector(m)))
       {
-        // var regex = BuildRegex(url, baseArch);
-        // var entry = BuildStoreIdEntry(regex, releaseVersion);
-        await stream.WriteAsync(mirror.Url.TrimAt(pattern));
+        await stream.WriteLineAsync(mirror.Url.TrimAt(pattern, 1));
       }
       
       await stream.FlushAsync();
