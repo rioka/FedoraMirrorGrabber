@@ -28,16 +28,16 @@ public class AptCacherUrlProcessorTests
 
       // rpmfusion
       yield return new TestCaseData(
-        "https://mirror.netsite.dk/rpmfusion/free/fedora/releases/43/Everything/x86_64/os/repodata/repomd.xml",
+        "https://mirror.netsite.dk/rpmfusion/free/fedora/releases/37/Everything/x86_64/os/repodata/repomd.xml",
         "https://mirror.netsite.dk/rpmfusion/free/fedora/");
       yield return new TestCaseData(
-        "http://mirror.netsite.dk/rpmfusion/nonfree/fedora/releases/43/Everything/x86_64/os/repodata/repomd.xml",
+        "http://mirror.netsite.dk/rpmfusion/nonfree/fedora/releases/37/Everything/x86_64/os/repodata/repomd.xml",
         "http://mirror.netsite.dk/rpmfusion/nonfree/fedora/");
       yield return new TestCaseData(
-        "http://fr2.rpmfind.net/linux/rpmfusion/free/fedora/updates/43/x86_64/repodata/repomd.xml",
+        "http://fr2.rpmfind.net/linux/rpmfusion/free/fedora/updates/37/x86_64/repodata/repomd.xml",
         "http://fr2.rpmfind.net/linux/rpmfusion/free/fedora/");
       yield return new TestCaseData(
-        "http://rpmfusion.ip-connect.info/nonfree/fedora/updates/43/x86_64/repodata/repomd.xml",
+        "http://rpmfusion.ip-connect.info/nonfree/fedora/updates/37/x86_64/repodata/repomd.xml",
         "http://rpmfusion.ip-connect.info/nonfree/fedora/");
     }
   }
